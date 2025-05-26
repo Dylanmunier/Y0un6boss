@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+
 import { 
   Globe, 
   Search, 
@@ -8,9 +9,9 @@ import {
   BarChart, 
   UsersRound,
   Zap,
-  ArrowRight,
-  CheckCircle
+  ArrowRight
 } from 'lucide-react';
+import ServiceCard from '../components/services/ServiceCard';
 
 const ServicesPage: React.FC = () => {
   const { t } = useTranslation();
@@ -125,27 +126,14 @@ const ServicesPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all p-6"
               >
-                <div className={`w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center mb-6`}>
-                  {service.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {service.description}
-                </p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-success-500 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600 dark:text-gray-300">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                  color={service.color}
+                />
               </motion.div>
             ))}
           </div>

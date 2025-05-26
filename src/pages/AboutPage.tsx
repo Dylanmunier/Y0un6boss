@@ -7,9 +7,9 @@ import {
   Globe,
   Zap,
   Target,
-  Shield,
-  CheckCircle
+  Shield
 } from 'lucide-react';
+import ValueCard from '../components/about/ValueCard';
 
 const AboutPage: React.FC = () => {
   const { t } = useTranslation();
@@ -128,17 +128,13 @@ const AboutPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6"
               >
-                <div className={`w-16 h-16 ${value.color} rounded-2xl flex items-center justify-center mb-6`}>
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {value.description}
-                </p>
+                <ValueCard
+                  icon={value.icon}
+                  title={value.title}
+                  description={value.description}
+                  color={value.color}
+                />
               </motion.div>
             ))}
           </div>
